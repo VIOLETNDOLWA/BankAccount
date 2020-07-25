@@ -3,76 +3,92 @@ class BankAccount:
 
 
     def _init_(self,first_name,last_name):
-        self.first_name =first_name
-        self.last_name =last_name
+        self.first_name =first_name = first_name
+        self.last_name =last_name = last_name
         self.balance = 0
+        self.phone_number = phone_number
+        self.bank = bank
+        self.deposit = []
+        self.withdrawals =[]
+        self.loan = 0
+
 
     def account_name(self):
-         name = "{}.account for {} {}".format(self.bank,self.first_name,self.last_name_
-         return name
+        name = "{} account for {} {}".format(self.bank,self.first_name,self.last_name)
+        return  name
 
 
-    def withdraw(self,amount):
-         self .balance += amount
+    def deposit(self,amount):
+        try:
+            amount = 1000
+        except TypeError:
+            print("please enter amount in figures") 
+            return 
+        if amount <=0:
+           print("you cannot deposit zero or negative") 
+        else:     
+            self .balance += amount
+            self.deposit.append(amount)
+            time = datetime.now()
+            formarted_time = time.strftime("%A,%B,%e,%Y,%I:%M %P")
+            print("you have deposited {} to {} on {}".format(amount,self.account_name),formarted_time)        
 
+    def withdraw(self, amount):
+        try:
+            amount = 1000
+        except TypeError:
+            print("please enter amount  in figures")
+            return
+        if amount <=0:
+            print("you cannot withdraw zero or negative")
+        elif amount >self.balance:
+            print("you don't have enough balance")
+        else:
+            self.balance +=amount
+            self.withdrawls.append(amount)
+            time = datetime.now()
+            formarted_time = time.strftime("%A,%B,%e,%Y,%I:%M %P")
 
-         print("you have withdraw {} to your accoun".format(amount))  
-    def get_balance(self) 
-      return "This balance for {} is {}".format(self.account_name(),self.balance)
-
-    def deposi(self.amount):
-        self.balance +=amount
-
-        print("you have deposited {} to your account".format(amount))
-        if amount > 0:
-           print("you have deposited {}from your account".format(amount))
-        else :
-            print("money isn't sufficient)
-acc1 =BankAccount("Leila","marvelous")
-acc2 =BankAccount("charles","precious")
-
-acc3 =BankAccount("Favour","Pendo")
-acc4 =BankAccount("Darius","handsome")
-
-acc1.deposit(9000)
-acc2.deposit(4000)
-acc1.deposit(1000)
-acc2.deposit(700)
-
-acc3.withdraw(14000)
-acc4.withdraw(1000)
-acc3.withdraw(750)
-acc.withdraw(700)
-
-print(acc1.get_balance())
-print(acc2.get_balance())
-
-print(acc1.account_name())
-print(acc2.account_name())
-
-# write a method to return the withdrawl transaction
-     def lend_loan(self,loan):
-         if loan <=0:
-             print("invalid request")
-             else:
-                 self.loan_balance +=loan
-                 print("{} you have borrowed {}".format(self.account_name,loan))
-
-    def deposit_statment(self,amount):
-        self.deposit(self.amount)
-        return self.deposit_statment_summary.append(amount)
-
-
-acc1 =BankAccount("Favour","Blessing"'+2547890269,"KCB")
-print(acc1.phone_number)
-acc1.deposit(150000)
-acc1.withdraw(12000)
-acc1.withdraw(10000)
-acc1.deposit(7000)
-acc1.deposit(5000)
-acc1.lend_loan(20000)
-acc1.pay_loan(8000)
-print(acc1.loan_balance)
-print(acc1.deposit_summary)
-
+            print("you have withrawn {} from {} on {}".format(amount,self.account_name),formated_time)        
     
+    def get_balance(self):
+        return "The balance for {} is {} on {}".format(self.account_name(),self.balance)
+
+
+
+    def show_deposit_statment(self):
+        for deposit in self.deposit:
+            print(deposit)
+        else:
+             self.balance +=(amount)
+             time = datetime.now()
+             formarted_time = time.strftime("%A,%B,%e,%Y,%I:%M %P")
+             print("you have deposited {} on {}".format(amount,formarted_time))
+
+    def show_withdrawals_statment(self):
+        for withdrawals in self.withdrawals:
+            print(withdrawal)
+        else:
+             self.balance +=(amount)
+             self.withdrawals.append(amount)
+             time = datetime.now()
+             formarted_time = time.strftime("%A,%B,%e,%Y,%I:%M %P")
+             print("you have withdraw {} on {}".format(amount,formarted_time))
+
+
+    def request_loan(self,amount):
+         try:
+            amount = 1000
+         except TypeError:
+            print("please enter amount  in figures")
+            return
+         if amount <=0:
+            print("you cannot request a loan of that amount")
+         else:
+            self.balance +=amount
+            self.loan.append(amount)
+            time = datetime.now()
+            formarted_time = time.strftime("%A,%B,%e,%Y,%I:%M %P")
+            print("you have been given a loan of {} on {}".format(amount,formarted_time))
+
+
